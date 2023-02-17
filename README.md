@@ -1,7 +1,7 @@
 # Medical Image Subregion Partiton Toolkit (MISA) 
 
 <p align="center">
-  <img src="https://github.com/zhenweishi/MISA/blob/b7ceecaef8c7f6e43c5ee9a91b66affa4871f849/Materials/MediaLab_logo.png" width="600" height="300">
+  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/MediaLab_logo.png" width="600" height="300">
 </p>
 
 
@@ -86,7 +86,7 @@ extract_main(image_path, mask_path, sv_path, out_path, mode, kernel)
 
 
 <p align="center">
-  <img src="https://github.com/zhenweishi/MISA/blob/507da012cf2ed2a3837e29061c6f6072c873b71b/Materials/pre-segmentation.png" width="600" height="400">
+  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/pre-segmentation.png" width="600" height="400">
 </p>
 
 
@@ -108,7 +108,7 @@ cluster_main(image_path, csv_path, sv_path, concat_path, out_path)
 ```
 
 <p align="center">
-  <img src="https://github.com/zhenweishi/MISA/blob/b7ceecaef8c7f6e43c5ee9a91b66affa4871f849/Materials/Concat_subregionmap.png" width="600" height="400">
+  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/Concat_subregionmap.png" width="600" height="400">
 </p>
 
 ### License
