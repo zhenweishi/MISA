@@ -68,10 +68,6 @@ makedirs(sv_path)
 makedirs(csv_path)
 makedirs(concat_path)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/pre-segmentation.png" width="600" height="400">
-</p>
-
 ```
 
 MISA provides a functionality to automatically generate multiple regions of interest (ROI) surrounding tumor, whcih are able to describe tumor microenvironment, such as peritumor and tumor ring. The clients can change the size of the peritumor or tumor ring area by modifying the kernel_size parameter, and select the subregion processing mode: 'initial (default as original tumor)', 'peritumor', 'tumor ring'.
