@@ -1,9 +1,8 @@
-# Medical Image Subregion Partiton Toolkit (MISA) 
+# Medical Image Subregion Analysis Toolkit (MISA) 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/MediaLab_logo.png" width="600" height="300">
+  <img src="https://user-images.githubusercontent.com/17007301/219617294-a5f38b07-4599-4834-aa7c-96d01299a531.png" width="600" height="300">
 </p>
-
 
 |Build/Test Status|Code Status|Documentation|
 | :---------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -68,6 +67,11 @@ concat_path = os.path.join(out_path, 'concat_mask')
 makedirs(sv_path)
 makedirs(csv_path)
 makedirs(concat_path)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/pre-segmentation.png" width="600" height="400">
+</p>
+
 ```
 
 MISA provides a functionality to automatically generate multiple regions of interest (ROI) surrounding tumor, whcih are able to describe tumor microenvironment, such as peritumor and tumor ring. The clients can change the size of the peritumor or tumor ring area by modifying the kernel_size parameter, and select the subregion processing mode: 'initial (default as original tumor)', 'peritumor', 'tumor ring'.
@@ -84,10 +88,7 @@ MISA follows a two-step subregion segmentation strategy, that is, pre-segmentati
 extract_main(image_path, mask_path, sv_path, out_path, mode, kernel)
 ```
 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/pre-segmentation.png" width="600" height="400">
-</p>
+![pre-segmentation](https://user-images.githubusercontent.com/17007301/219617436-37cf7a37-de46-4574-bcd2-0c070c7dfecd.png)
 
 
 #### 4. Quantitative imaging feature extraction
@@ -107,9 +108,7 @@ MISA provides a function to cluster the small pre-segmented regions by analyzing
 cluster_main(image_path, csv_path, sv_path, concat_path, out_path)
 ```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/zhenweishi/MISA/main/Materials/Concat_subregionmap.png" width="600" height="400">
-</p>
+![Concat_subregionmap](https://user-images.githubusercontent.com/17007301/219617647-edd8599e-2299-47e1-bd4f-21028f1136e6.png)
 
 ### License
 
