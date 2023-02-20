@@ -1,4 +1,4 @@
-# Medical Image Subregion Analysis Toolkit (MISA) 
+# Medical Image Subregion Analysis Toolkit (MISAToolkit) 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/17007301/219617294-a5f38b07-4599-4834-aa7c-96d01299a531.png" width="600" height="300">
@@ -8,13 +8,13 @@
 | :---------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: |
 | [![](https://travis-ci.org/modelhub-ai/modelhub-engine.svg?branch=master)](https://travis-ci.org/modelhub-ai/modelhub-engine) | [![Coverage Status](https://coveralls.io/repos/github/modelhub-ai/modelhub-engine/badge.svg?branch=master&service=github)](https://coveralls.io/github/modelhub-ai/modelhub-engine?branch=master) | [![Documentation Status](https://readthedocs.org/projects/modelhub/badge/?version=latest)](https://modelhub.readthedocs.io/en/latest/?badge=latest) |
 
-### Welcome to Medical Image Subregion Analysis Toolkit (MISA) package.
+### Welcome to Medical Image Subregion Analysis Toolkit (MISAToolkit) package.
 
-MISA is a Python package, which aims for tumor subregion and surrounding microenvironment analysis in cancer domain by medical imaging data, such as CT, PET, MRI and US. Note that, MISA is not only developed for 3D medical data, but also for 2D medical data (e.g., US or single 2D slice). 
+MISAToolkit is a Python package, which aims for tumor subregion and surrounding microenvironment analysis in cancer domain by medical imaging data, such as CT, PET, MRI and US. Note that, MISAToolkit is not only developed for 3D medical data, but also for 2D medical data (e.g., US or single 2D slice). 
 
-MISA is designed and developed by Zhenwei Shi, Zhihe Zhao and other AI/CS scientists from Media Lab. Also, the work is supported and guided by well-known radiologists MD Zaiyi Liu and MD Changhong Liang from the radiolgoy department of Guangdong Provincial People's Hospital.
+MISAToolkit is designed and developed by Zhenwei Shi, Zhihe Zhao and other AI/CS scientists from Media Lab. Also, the work is supported and guided by well-known radiologists MD Zaiyi Liu and MD Changhong Liang from the radiolgoy department of Guangdong Provincial People's Hospital.
 
-The workflow of MISA includes five major functionalities:
+The workflow of MISAToolkit includes five major functionalities:
 - Data pre-processing
 - Subregion pre-segmentation
 - Clustering in population-level
@@ -24,7 +24,7 @@ The workflow of MISA includes five major functionalities:
 ### Installation
 
 ```
-pip install MISA
+pip install MISAToolkit
 ```
 ### Features
 
@@ -46,11 +46,11 @@ pip install MISA
 import numpy as np
 import matplotlib.pyplot as plt
 import os 
-from MISA.function import makedirs, extract_main, feature_extract_main, cluster_main, cluster_main_predict
+from MISAToolkit.function import makedirs, extract_main, feature_extract_main, cluster_main, cluster_main_predict
 ```
 
 #### 2. Parameter Setting
-Some local directories are set before processing, including main workding directory, image and mask directory, output directory, and also parameter setting directory for quantitative imaging feature extraction. Note that, MISA uses an open-source software [PyRadiomics](https://pyradiomics.readthedocs.io/en/latest/) to extract radiomic features as default, while the clients are allowed to use any other kinds of features. For radiomics extraction, the clients can download the parameter setting file (.ymal) for simulation from [MISA](https://github.com/zhenweishi/MISA).
+Some local directories are set before processing, including main workding directory, image and mask directory, output directory, and also parameter setting directory for quantitative imaging feature extraction. Note that, MISAToolkit uses an open-source software [PyRadiomics](https://pyradiomics.readthedocs.io/en/latest/) to extract radiomic features as default, while the clients are allowed to use any other kinds of features. For radiomics extraction, the clients can download the parameter setting file (.ymal) for simulation from [MISAToolkit](https://github.com/zhenweishi/MISA).
 
 ```sh
 # set local paths
@@ -70,7 +70,7 @@ makedirs(concat_path)
 
 ```
 
-MISA provides a functionality to automatically generate multiple regions of interest (ROI) surrounding tumor, whcih are able to describe tumor microenvironment, such as peritumor and tumor ring. The clients can change the size of the peritumor or tumor ring area by modifying the kernel_size parameter, and select the subregion processing mode: 'initial (default as original tumor)', 'peritumor', 'tumor ring'.
+MISAToolkit provides a functionality to automatically generate multiple regions of interest (ROI) surrounding tumor, whcih are able to describe tumor microenvironment, such as peritumor and tumor ring. The clients can change the size of the peritumor or tumor ring area by modifying the kernel_size parameter, and select the subregion processing mode: 'initial (default as original tumor)', 'peritumor', 'tumor ring'.
 
 ```sh
 mode = 'peritumor' # 'initial','peritumor','tumor_ring'
@@ -78,7 +78,7 @@ kernel_size = 3
 ```
 #### 3. Pre-segmentation of subregions
 
-MISA follows a two-step subregion segmentation strategy, that is, pre-segmentation and fine subregion partition. In the pre-segmentation step, it splits the whole ROI in pieces by taking into account image properties itself, of which the number depends on the surface/volume of the ROI. To preserve enough information for feature extraction later, MISA suggests not to split the individual pre-segments too small. Some examples with pre-segmented subregion  maps are shown as follows.
+MISAToolkit follows a two-step subregion segmentation strategy, that is, pre-segmentation and fine subregion partition. In the pre-segmentation step, it splits the whole ROI in pieces by taking into account image properties itself, of which the number depends on the surface/volume of the ROI. To preserve enough information for feature extraction later, MISAToolkit suggests not to split the individual pre-segments too small. Some examples with pre-segmented subregion  maps are shown as follows.
 
 ```sh
 extract_main(image_path, mask_path, sv_path, out_path, mode, kernel)
@@ -89,7 +89,7 @@ extract_main(image_path, mask_path, sv_path, out_path, mode, kernel)
 
 #### 4. Quantitative imaging feature extraction
 
-MISA uses radiomic feature as the default quantiative imaging feature. In this step, MISA is able to extract radiomics from the small regions aquired above. Also, the clients are allowed to use other kinds of features, such as deep learning and handcraft features.
+MISAToolkit uses radiomic feature as the default quantiative imaging feature. In this step, MISA is able to extract radiomics from the small regions aquired above. Also, the clients are allowed to use other kinds of features, such as deep learning and handcraft features.
 
 ```sh
 feature_extract_main(sv_path, csv_path,yaml_path)
@@ -97,7 +97,7 @@ feature_extract_main(sv_path, csv_path,yaml_path)
 
 #### 5. Generation of subregion partition map
 
-MISA provides a function to cluster the small pre-segmented regions by analyzing the imaging features, which can gether the small regions with similar properties. Some examples with final subregion partition maps are shown as follows.
+MISAToolkit provides a function to cluster the small pre-segmented regions by analyzing the imaging features, which can gether the small regions with similar properties. Some examples with final subregion partition maps are shown as follows.
 
 
 ```sh
@@ -108,11 +108,11 @@ cluster_main(image_path, csv_path, sv_path, concat_path, out_path)
 
 ### License
 
-MISA package is freely available to browse, download, and use for scientific and educational purposes as outlined in the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
+MISAToolkit package is freely available to browse, download, and use for scientific and educational purposes as outlined in the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
 
 ### Disclaimer
 
-MISA is still under development. Although we have tested and evaluated the workflow under many different situations, it may have errors and bugs unfortunately. Please use it cautiously. If you find any, please contact us and we would fix them ASAP.
+MISAToolkit is still under development. Although we have tested and evaluated the workflow under many different situations, it may have errors and bugs unfortunately. Please use it cautiously. If you find any, please contact us and we would fix them ASAP.
 
 ### Main Developers
  - [Dr. Zhenwei Shi](https://github.com/zhenweishi) <sup/>1, 2
@@ -134,4 +134,4 @@ MISA is still under development. Although we have tested and evaluated the workf
 We are happy to help you with any questions. Please contact Zhenwei Shi.
 Email: shizhenwei@gdph.org.cn
 
-We welcome contributions to MISA.
+We welcome contributions to MISAToolkit.
